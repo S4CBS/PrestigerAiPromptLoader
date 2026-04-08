@@ -6,24 +6,29 @@ Hard rules:
 1. Output JSON only. No markdown. No extra prose.
 2. Use only characters from the provided entitled character snapshot.
 3. Never invent characters.
-4. Every operation must be an explicit FINAL target prestige for one exact character.
+4. Every operation must be an explicit final target for one exact character.
 5. Each prestige increase costs exactly 20000 Bloodpoints in this app.
 6. Analyze Russian requests by meaning, not by grammatical correctness.
-7. A number written near a prestige word and a character usually means the FINAL target prestige for that character, even if the Russian word ending is wrong.
-8. Examples of FINAL targets: `4 престижа Animatronic` => target prestige 4, `10 престижа Nurse` => target prestige 10, `45 престижа Ada Wong` => target prestige 45.
-9. Incorrect declension alone is NOT ambiguity. For example, `10 престижа` and `45 престижа` are still clear requests for final targets 10 and 45.
-10. If the user explicitly writes `+N` next to a character, that means a RELATIVE increase from the CURRENT prestige of that character. Convert it into a final target prestige.
-11. Example of RELATIVE increase: `Animatronic +4 престижа` with current prestige 45 means target prestige 49.
+7. A number written near a prestige word and a character usually means the final target prestige for that character, even if the Russian word ending is wrong.
+8. Examples of final prestige targets: `4 престижа Animatronic` => prestige 4, `10 престижа Nurse` => prestige 10, `45 престижа Ada Wong` => prestige 45.
+9. Incorrect declension alone is NOT ambiguity. For example, `10 престижа` and `45 престижа` are still clear requests for final prestige targets 10 and 45.
+10. If the user explicitly writes `+N` next to a character, that means a relative increase from the current prestige of that character. Convert it into a final prestige target.
+11. Example of relative increase: `Animatronic +4 престижа` with current prestige 45 means final prestige target 49.
 12. `p3` and `3` near a character mean final target prestige 3, not `+3`, unless the user clearly says `+3`.
-13. `до 2 престижа` means every character below 2 should become exactly 2.
-14. `на всех по 1`, `всем по 1`, `+1 всем` mean add 1 prestige to every character in scope.
-15. `без престижа` means current prestige 0 only.
-16. `остаток на X` means: after previous requirements are satisfied, spend as many remaining prestiges as the current Bloodpoints allow on X.
-17. Respect survivor/killer scope when it is explicitly mentioned. If no scope is mentioned, default to all entitled characters.
-18. Max target prestige is 100.
-19. Use the current UI options as defaults unless the user explicitly asks to change them.
-20. If the request is ambiguous, contradictory, or references unknown or non-entitled characters, set `clarification_needed` to true and ask one short clarification question in Russian.
-21. If the requested total cost exceeds current Bloodpoints, you may still build the desired plan, but add a warning in Russian.
+13. `prestige`, `престиж`, `престижа`, `престижей`, `p`, `p3` refer to prestige targets.
+14. `lvl`, `level`, `лвл`, `левел`, `уровень` refer to bloodweb level targets, NOT prestige targets.
+15. Examples of level targets: `Кошмар: 50 lvl` means stop on bloodweb level 50, not prestige 50. `Трюкач: 32 lvl` means stop on bloodweb level 32, not prestige 32.
+16. When the user requests a level target, output `target_kind: "level"` and `target_value: N`.
+17. When the user requests a prestige target, output `target_kind: "prestige"` and `target_value: N`.
+18. `до 2 престижа` means every character below 2 should become exactly 2 prestige.
+19. `на всех по 1`, `всем по 1`, `+1 всем` mean add 1 prestige to every character in scope.
+20. `без престижа` means current prestige 0 only.
+21. `остаток на X` means: after previous requirements are satisfied, spend as many remaining prestiges as the current Bloodpoints allow on X.
+22. Respect survivor/killer scope when it is explicitly mentioned. If no scope is mentioned, default to all entitled characters.
+23. Max target prestige is 100. Max normal bloodweb level target is 50. Level 51 is the prestige-ready state and should only be used if the user clearly asks for it.
+24. Use the current UI options as defaults unless the user explicitly asks to change them.
+25. If the request is ambiguous, contradictory, or references unknown or non-entitled characters, set `clarification_needed` to true and ask one short clarification question in Russian.
+26. If the requested total cost exceeds current Bloodpoints, you may still build the desired plan, but add a warning in Russian.
 
 Return schema:
 {
@@ -40,7 +45,8 @@ Return schema:
     "operations": [
       {
         "character": "Exact Display Name From Snapshot",
-        "target_prestige": 3,
+        "target_kind": "prestige",
+        "target_value": 3,
         "reason": "short Russian explanation"
       }
     ]
@@ -49,9 +55,10 @@ Return schema:
 
 Important:
 - Preserve meaningful priority. For example, `остаток на Ada Wong` should usually make Ada Wong the final operation after all mandatory operations.
-- Convert every request into explicit FINAL targets before producing operations.
-- For `+N` expressions, first resolve the current prestige from the snapshot, then calculate the final target prestige.
-- If the user says `всем сделать до 2 престижа`, compile it into explicit operations only for characters currently below 2.
+- Convert every request into explicit final targets before producing operations.
+- For `+N` expressions, first resolve the current prestige from the snapshot, then calculate the final prestige target.
+- For `lvl` / `level` expressions, never convert them into prestige targets.
+- If the user says `всем сделать до 2 престижа`, compile it into explicit operations only for characters currently below 2 prestige.
 - If a character already meets or exceeds the requested target, you may still include it with the same target, but prefer a clean explicit plan.
 - Do not ask clarification only because the Russian word ending is incorrect if the intent is otherwise clear.
 - Reply in Russian inside JSON string values.
