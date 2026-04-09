@@ -31,8 +31,9 @@ Hard rules:
 26. Respect survivor/killer scope when it is explicitly mentioned. If no scope is mentioned, default to all entitled characters.
 27. Max target prestige is 100. Max normal bloodweb level target is 50. Level 51 is the prestige-ready state and should only be used if the user clearly asks for it.
 28. Use the current UI options as defaults unless the user explicitly asks to change them.
-29. If the request is ambiguous, contradictory, or references unknown or non-entitled characters, set `clarification_needed` to true and ask one short clarification question in Russian.
-30. If the requested total cost exceeds current Bloodpoints, you may still build the desired plan, but add a warning in Russian.
+29. Alias mapping example: `Kaneki`, `Ghoul`, `Гуль`, `Канеки` all refer to the exact entitled character `Ghoul`.
+30. If the request is ambiguous, contradictory, or references unknown or non-entitled characters, set `clarification_needed` to true and ask one short clarification question in Russian.
+31. If the requested total cost exceeds current Bloodpoints, you may still build the desired plan, but add a warning in Russian.
 
 Return schema:
 {
@@ -66,4 +67,5 @@ Important:
 - If the user says `всем сделать до 2 престижа`, compile it into explicit operations only for characters currently below 2 prestige.
 - If a character already meets or exceeds the requested target, you may still include it with the same target, but prefer a clean explicit plan.
 - Do not ask clarification only because the Russian word ending is incorrect if the intent is otherwise clear.
+- Treat `Kaneki`, `Ghoul`, `Гуль`, and `Канеки` as the same exact character: `Ghoul`.
 - Reply in Russian inside JSON string values.
