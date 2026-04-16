@@ -9,31 +9,32 @@ Hard rules:
 4. Every operation must be an explicit final target for one exact character.
 5. Each prestige increase costs exactly 20000 Bloodpoints in this app.
 6. Analyze Russian requests by meaning, not by grammatical correctness.
-7. A number written near a prestige word and a character usually means the final target prestige for that character, even if the Russian word ending is wrong.
-8. Examples of final prestige targets: `4 престижа Animatronic` => prestige 4, `10 престижа Nurse` => prestige 10, `45 престижа Ada Wong` => prestige 45.
-9. Incorrect declension alone is NOT ambiguity. For example, `10 престижа` and `45 престижа` are still clear requests for final prestige targets 10 and 45.
-10. If the user explicitly writes `+N` next to a character, that means a relative increase from the current prestige of that character. Convert it into a final prestige target.
+7. A bare number near a character usually means ADD that many prestiges for that character from the current snapshot, not the final absolute prestige.
+8. Examples of relative shorthand: `Фенга 3` means add 3 prestiges to Feng, and if Feng currently has prestige 31 then the final prestige target is 34. `Nurse 10` means add 10 prestiges to Nurse from her current prestige.
+9. Incorrect declension alone is NOT ambiguity. For example, `Фенга 3`, `Фенг 3`, and `3 престижа Фенгу` are still clear shorthand requests for `+3`, unless the user explicitly marks an absolute target.
+10. If the user explicitly writes `+N` next to a character, that also means a relative increase from the current prestige of that character. Convert it into a final prestige target.
 11. Example of relative increase: `Animatronic +4 престижа` with current prestige 45 means final prestige target 49.
-12. `p3` and `3` near a character mean final target prestige 3, not `+3`, unless the user clearly says `+3`.
-13. `prestige`, `престиж`, `престижа`, `престижей`, `p`, `p3` refer to prestige targets.
-14. `lvl`, `level`, `лвл`, `левел`, `уровень` refer to bloodweb level targets, NOT prestige targets.
-15. Examples of level targets: `Кошмар: 50 lvl` means stop on bloodweb level 50, not prestige 50. `Трюкач: 32 lvl` means stop on bloodweb level 32, not prestige 32.
-16. When the user requests a level target, output `target_kind: "level"` and `target_value: N`.
-17. When the user requests a prestige target, output `target_kind: "prestige"` and `target_value: N`.
-18. If one phrase contains multiple constraints separated by `и`, split them into multiple operations when needed.
-19. If the second part after `и` omits the character name but clearly continues the same character, inherit the previous explicit character name.
-20. Example: `Ace +2 и 23 лвл` must become two operations for Ace: first prestige `+2` from current prestige, then level target `23`.
-21. For the same character, if one request contains both prestige and level goals, prestige operations must come BEFORE level operations.
-22. `до 2 престижа` means every character below 2 should become exactly 2 prestige.
-23. `на всех по 1`, `всем по 1`, `+1 всем` mean add 1 prestige to every character in scope.
-24. `без престижа` means current prestige 0 only.
-25. `остаток на X` means: after previous requirements are satisfied, spend as many remaining prestiges as the current Bloodpoints allow on X.
-26. Respect survivor/killer scope when it is explicitly mentioned. If no scope is mentioned, default to all entitled characters.
-27. Max target prestige is 100. Max normal bloodweb level target is 50. Level 51 is the prestige-ready state and should only be used if the user clearly asks for it.
-28. Use the current UI options as defaults unless the user explicitly asks to change them.
-29. Resolve character names using the bilingual Dead by Daylight roster: official English names, official Russian localizations, full names, short names, and common RU/EN aliases all refer to the same entitled character. Example: `Kaneki`, `Ghoul`, `Гуль`, `Канеки` all refer to the exact entitled character `Ghoul`.
-30. If the request is ambiguous, contradictory, or references unknown or non-entitled characters, set `clarification_needed` to true and ask one short clarification question in Russian.
-31. If the requested total cost exceeds current Bloodpoints, you may still build the desired plan, but add a warning in Russian.
+12. Absolute prestige targets require an explicit marker such as `до N`, `сделай до N`, `target N`, `exactly N`, `ровно N`, `== N`, or compact forms like `p3`.
+13. Examples of absolute prestige targets: `до 4 престижа Animatronic` => prestige 4, `Nurse p10` => prestige 10, `Ada Wong ровно 45 престижа` => prestige 45, `Фенга == 90` => prestige 90.
+14. `prestige`, `престиж`, `престижа`, `престижей`, `p`, `p3` refer to prestige requests.
+15. `lvl`, `level`, `лвл`, `левел`, `уровень` refer to bloodweb level targets, NOT prestige targets.
+16. Examples of level targets: `Кошмар: 50 lvl` means stop on bloodweb level 50, not prestige 50. `Трюкач: 32 lvl` means stop on bloodweb level 32, not prestige 32.
+17. When the user requests a level target, output `target_kind: "level"` and `target_value: N`.
+18. When the user requests a prestige target, output `target_kind: "prestige"` and `target_value: N`.
+19. If one phrase contains multiple constraints separated by `и`, split them into multiple operations when needed.
+20. If the second part after `и` omits the character name but clearly continues the same character, inherit the previous explicit character name.
+21. Example: `Ace +2 и 23 лвл` must become two operations for Ace: first prestige `+2` from current prestige, then level target `23`.
+22. For the same character, if one request contains both prestige and level goals, prestige operations must come BEFORE level operations.
+23. `до 2 престижа` means every character below 2 should become exactly 2 prestige.
+24. `на всех по 1`, `всем по 1`, `+1 всем` mean add 1 prestige to every character in scope.
+25. `без престижа` means current prestige 0 only.
+26. `остаток на X` means: after previous requirements are satisfied, spend as many remaining prestiges as the current Bloodpoints allow on X.
+27. Respect survivor/killer scope when it is explicitly mentioned. If no scope is mentioned, default to all entitled characters.
+28. Max target prestige is 100. Max normal bloodweb level target is 50. Level 51 is the prestige-ready state and should only be used if the user clearly asks for it.
+29. Use the current UI options as defaults unless the user explicitly asks to change them.
+30. Resolve character names using the bilingual Dead by Daylight roster: official English names, official Russian localizations, full names, short names, and common RU/EN aliases all refer to the same entitled character. Example: `Kaneki`, `Ghoul`, `Гуль`, `Канеки` all refer to the exact entitled character `Ghoul`.
+31. If the request is ambiguous, contradictory, or references unknown or non-entitled characters, set `clarification_needed` to true and ask one short clarification question in Russian.
+32. If the requested total cost exceeds current Bloodpoints, you may still build the desired plan, but add a warning in Russian.
 
 Return schema:
 {
@@ -61,6 +62,7 @@ Return schema:
 Important:
 - Preserve meaningful priority. For example, `остаток на Ada Wong` should usually make Ada Wong the final operation after all mandatory operations.
 - Convert every request into explicit final targets before producing operations.
+- Treat shorthand `Character N` as `+N` prestige unless the user clearly marks an absolute target with words like `до`, `ровно`, `exactly`, `target`, `==`, or compact notation like `p3`.
 - For `+N` expressions, first resolve the current prestige from the snapshot, then calculate the final prestige target.
 - For `lvl` / `level` expressions, never convert them into prestige targets.
 - For the same character, mixed `prestige + level` requests must become multiple operations in order: prestige first, then level.
