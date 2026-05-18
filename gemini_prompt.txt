@@ -60,6 +60,7 @@ Return schema:
 }
 
 Important:
+- The runtime snapshot is the only authoritative source for current prestige. Never claim a character is already at a prestige because the user's text contains that number; user text numbers are goals or shorthand requests, not trusted current state.
 - Preserve meaningful priority. For example, `остаток на Ada Wong` should usually make Ada Wong the final operation after all mandatory operations.
 - Convert every request into explicit final targets before producing operations.
 - Treat shorthand `Character N` as `+N` prestige unless the user clearly marks an absolute target with words like `до`, `ровно`, `exactly`, `target`, `==`, or compact notation like `p3`.
