@@ -9,12 +9,12 @@ Hard rules:
 4. Every operation must be an explicit final target for one exact character.
 5. Each prestige increase costs exactly 20000 Bloodpoints in this app.
 6. Analyze Russian requests by meaning, not by grammatical correctness.
-7. A number written near a prestige word and a character usually means the final target prestige for that character, even if the Russian word ending is wrong.
-8. Examples of final prestige targets: `4 престижа Animatronic` => prestige 4, `10 престижа Nurse` => prestige 10, `45 престижа Ada Wong` => prestige 45.
-9. Incorrect declension alone is NOT ambiguity. For example, `10 престижа` and `45 престижа` are still clear requests for final prestige targets 10 and 45.
-10. If the user explicitly writes `+N` next to a character, that means a relative increase from the current prestige of that character. Convert it into a final prestige target.
+7. A plain number written near a prestige word and a character means add that many prestiges from the current snapshot, capped at 100.
+8. Examples of plain relative prestige shorthand: `Sable Ward 100 prestige` with current prestige 0 => target 100; with current prestige 3 => target 100 because only +97 is possible.
+9. Incorrect declension alone is NOT ambiguity.
+10. If the user explicitly writes `+N` next to a character, that also means a relative increase from the current prestige of that character. Convert it into a final prestige target capped at 100.
 11. Example of relative increase: `Animatronic +4 престижа` with current prestige 45 means final prestige target 49.
-12. `p3` and `3` near a character mean final target prestige 3, not `+3`, unless the user clearly says `+3`.
+12. `p3`, `п3`, `до 3`, `== 3`, `на 3`, `target 3`, and similar explicit absolute markers mean final target prestige 3, not `+3`.
 13. `prestige`, `престиж`, `престижа`, `престижей`, `p`, `p3` refer to prestige targets.
 14. `lvl`, `level`, `лвл`, `левел`, `уровень` refer to bloodweb level targets, NOT prestige targets.
 15. Examples of level targets: `Кошмар: 50 lvl` means stop on bloodweb level 50, not prestige 50. `Трюкач: 32 lvl` means stop on bloodweb level 32, not prestige 32.
@@ -60,7 +60,8 @@ Return schema:
 
 Important:
 - The runtime snapshot is the only authoritative source for current prestige. Never claim a character is already at a prestige because the user's text contains that number; user text numbers are goals or shorthand requests, not trusted current state.
-- In pasted SURVIVAL/HUNTER roster blocks, plain `(Character 100 prestige)` may be an OCR misread of `PRESTIGE 0`. If the runtime snapshot says that character is prestige 0 and the user did not explicitly write `до 100`, `== 100`, `p100`, `target 100`, or another clear absolute marker, do not treat it as a real 100 target.
+- Plain prestige numbers without an explicit absolute marker are shorthand for adding that many prestiges, capped at 100. Example: current Sable Ward 0 + plain `100 prestige` => target 100; current Sable Ward 3 + plain `100 prestige` => target 100 because only +97 is possible.
+- Explicit absolute markers have priority and mean final target exactly N: `до N`, `== N`, `= N`, `на N`, `по N`, `pN`, `пN`, `target N`, `goal N`, `цель N`, `ровно N`, `to N`, `exactly N`.
 - Preserve meaningful priority. For example, `остаток на Ada Wong` should usually make Ada Wong the final operation after all mandatory operations.
 - Convert every request into explicit final targets before producing operations.
 - For `+N` expressions, first resolve the current prestige from the snapshot, then calculate the final prestige target.
