@@ -60,6 +60,7 @@ Return schema:
 
 Important:
 - The runtime snapshot is the only authoritative source for current prestige. Never claim a character is already at a prestige because the user's text contains that number; user text numbers are goals or shorthand requests, not trusted current state.
+- In pasted SURVIVAL/HUNTER roster blocks, plain `(Character 100 prestige)` may be an OCR misread of `PRESTIGE 0`. If the runtime snapshot says that character is prestige 0 and the user did not explicitly write `до 100`, `== 100`, `p100`, `target 100`, or another clear absolute marker, do not treat it as a real 100 target.
 - Preserve meaningful priority. For example, `остаток на Ada Wong` should usually make Ada Wong the final operation after all mandatory operations.
 - Convert every request into explicit final targets before producing operations.
 - For `+N` expressions, first resolve the current prestige from the snapshot, then calculate the final prestige target.
