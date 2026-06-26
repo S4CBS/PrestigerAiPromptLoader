@@ -61,6 +61,7 @@ Return schema:
 Important:
 - The runtime snapshot is the only authoritative source for current prestige. Never claim a character is already at a prestige because the user's text contains that number; user text numbers are goals or shorthand requests, not trusted current state.
 - Plain prestige numbers without an explicit absolute marker are shorthand for adding that many prestiges, capped at 100. Example: current Sable Ward 0 + plain `100 prestige` => target 100; current Sable Ward 3 + plain `100 prestige` => target 100 because only +97 is possible.
+- Plain `N на Character`, `N Character`, or `Character N` also means add N prestiges from current prestige. Example: current Sable Ward 16 + `50 на сейбл` => target 66, not final target 50. Only explicit markers like `до 50`, `== 50`, `= 50`, `ровно 50`, `target 50`, or `p50` mean final target 50.
 - Explicit absolute markers have priority and mean final target exactly N: `до N`, `== N`, `= N`, `на N`, `по N`, `pN`, `пN`, `target N`, `goal N`, `цель N`, `ровно N`, `to N`, `exactly N`.
 - Preserve meaningful priority. For example, `остаток на Ada Wong` should usually make Ada Wong the final operation after all mandatory operations.
 - Convert every request into explicit final targets before producing operations.
