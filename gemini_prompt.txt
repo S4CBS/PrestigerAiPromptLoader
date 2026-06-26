@@ -90,6 +90,7 @@ MANUAL_ALIASES = {
     "Clown": ["clown", "клоун"],
     "Artist": ["artist", "художница", "артист"],
     "The First": ["the first", "first", "фест", "ферст", "первый", "henry", "генри"],
+    "Slasher": ["slasher", "the slasher", "jason", "jason voorhees", "voorhees", "джейсон", "джейсон вурхиз", "вурхиз", "ворхиз", "ворхис", "пятница 13", "пятница тринадцатое", "кристальное озеро"],
     "Lich - Vecna": ["vecna", "lich", "лич", "векна"],
     "Good Guy": ["good guy", "chucky", "чакки", "чаки", "гуд гай"],
     "Hag": ["hag", "хаг", "ведьма"],
@@ -113,6 +114,7 @@ MANUAL_ALIASES = {
     "Taurie Cain": ["taurie cain", "taurie", "тори", "тори кейн", "таури", "таури кейн"],
     "Aestri Yazar": ["aestri yazar", "aestri", "аэстри", "аэстри язар"],
     "Vee Boonyasak": ["vee boonyasak", "vee", "ви", "ви бунясак", "ви буниясак", "ви бунязак"],
+    "Shane Wiigwaas": ["shane wiigwaas", "shane", "wiigwaas", "шейн", "шейн уиигваас", "уиигваас"],
     "Sable Ward": ["sable ward", "sable", "сейбл", "сейбл уорд"],
     "Trickster": ["trickster", "трикстер", "трюкач"],
     "Executioner": ["executioner", "пирамидоголовый", "палач", "экзекьюшенер"],
@@ -170,7 +172,7 @@ ROSTER_ALIASES = {
     "Jake": ["Jake Park", "Джейк Парк", "Джейк", "Парк", "Джек", "Park"],
     "Jane": ["Jane Romero", "Джейн Ромеро", "Джейн", "Ромеро", "Romero"],
     "Jeff": ["Jeff Johansen", "Джефф Йохансен", "Джефф", "Йохансен", "Johansen"],
-    "Jill Valentine": ["Джилл Валентайн", "Джилл", "Валентайн", "Jill", "Valentine"],
+    "Jill Valentine": ["Джилл Валентайн", "Джилл", "Джил", "Валентайн", "Jill", "Valentine"],
     "Jonah Vasquez": ["Хонас Васкес", "Йонас", "Хонас", "Васкес", "Jonah", "Vasquez"],
     "Kate": ["Kate Denson", "Кейт Денсон", "Кейт", "Денсон", "Denson"],
     "Knight": ["The Knight", "Рыцарь", "Тархос", "гварды", "Tarhos", "Guards"],
@@ -209,12 +211,14 @@ ROSTER_ALIASES = {
     "Taurie Cain": ["Тори Кейн", "Тори", "Таури", "Кейн", "Taurie", "Cain"],
     "Thalita Lyra": ["Талита Лира", "Талита", "Лира", "Thalita", "Lyra"],
     "The First": ["Первый", "Генри", "Крил", "First", "Henry Creel", "001"],
+    "Slasher": ["The Slasher", "Jason", "Jason Voorhees", "Voorhees", "Джейсон", "Джейсон Вурхиз", "Вурхиз", "Ворхиз", "Ворхис", "Пятница 13", "Пятница, 13-е", "Пятница тринадцатое", "Лагерь Хрустальное озеро", "Кристальное озеро"],
     "Trapper": ["The Trapper", "Охотник", "Траппер", "трап", "капканщик", "Trap", "Evan"],
     "Trevor Belmont": ["Тревор Бельмонт", "Тревор", "Белмонт", "Trevor", "Belmont"],
     "Trickster": ["The Trickster", "Трюкач", "Трикстер", "Джи-Ун", "Ji-Woon", "K-pop"],
     "Twins": ["The Twins", "Близнецы", "Шарлотта", "Виктор", "Charlotte", "Victor"],
     "Unknown": ["The Unknown", "Неведомое", "Невед", "Unk", "Thing"],
     "Vee Boonyasak": ["Ви Бунясак", "Бунясак", "Vee", "Boonyasak"],
+    "Shane Wiigwaas": ["Шейн Уиигваас", "Шейн", "Уиигваас", "Shane", "Wiigwaas"],
     "Vittorio Toscano": ["Витторио Тоскано", "Витторио", "Тоскано", "Vittorio", "Toscano"],
     "Witch": ["The Hag", "Ведьма", "Хаг", "Лиза", "Hag", "Lisa", "Trap Hag"],
     "Wraith": ["The Wraith", "Призрак", "Рейф", "Рэйс", "колокол", "Bing Bong", "Bell Guy"],
@@ -224,4 +228,1240 @@ ROSTER_ALIASES = {
     "Yun-Jin Lee": ["Ли Юнчин", "Yun-Jin", "YunJin", "Lee"],
     "Zarina": ["Zarina Kassir", "Зарина Кассир", "Зарина", "Кассир", "Kassir"],
     "Élodie Rakoto": ["Элоди Ракото", "Элоди", "Ракото", "Elodie", "Rakoto"],
+}
+
+Complete roster code and alias map (authoritative):
+- Use `code` to understand internal character identifiers such as `S53`.
+- Use `aliases` to resolve English, Russian, short, full-name, and common community names.
+- Always output the exact display-name key from this map in plan operations, not the code.
+ROSTER_CODE_ALIAS_MAP = {
+  "Ace": {
+    "code": "Ace",
+    "aliases": [
+      "Ace",
+      "Ace Visconti",
+      "Эйс Висконти",
+      "Эйс",
+      "Висконти",
+      "Туз",
+      "Visconti"
+    ]
+  },
+  "Adam": {
+    "code": "Adam",
+    "aliases": [
+      "Adam",
+      "Adam Francis",
+      "Адам Фрэнсис",
+      "Адам",
+      "Фрэнсис",
+      "Francis"
+    ]
+  },
+  "Ash": {
+    "code": "Ash",
+    "aliases": [
+      "Ash",
+      "Ash Williams",
+      "Эшли Джей Уильямс",
+      "Эшли",
+      "Уильямс",
+      "Ashley",
+      "Williams"
+    ]
+  },
+  "Huntress": {
+    "code": "Bear",
+    "aliases": [
+      "Huntress",
+      "Bear",
+      "The Huntress",
+      "Охотница",
+      "Хантрес",
+      "Анна",
+      "Anna",
+      "Hatchet Lady"
+    ]
+  },
+  "Bill": {
+    "code": "Bill",
+    "aliases": [
+      "Bill",
+      "Bill Overbeck",
+      "Уильям \"Билл\" Овербек",
+      "Билл",
+      "Овербек",
+      "Уильям",
+      "Overbeck",
+      "L4D Bill"
+    ]
+  },
+  "Wraith": {
+    "code": "Bob",
+    "aliases": [
+      "Wraith",
+      "Bob",
+      "The Wraith",
+      "Призрак",
+      "Рейф",
+      "Рэйс",
+      "колокол",
+      "Bing Bong",
+      "Bell Guy"
+    ]
+  },
+  "Cannibal": {
+    "code": "Cannibal",
+    "aliases": [
+      "Cannibal",
+      "кожаное лицо",
+      "каннибал",
+      "бубба",
+      "The Cannibal",
+      "Лезерфейс",
+      "Bubba",
+      "Leatherface"
+    ]
+  },
+  "Trapper": {
+    "code": "Chuckles",
+    "aliases": [
+      "Trapper",
+      "Chuckles",
+      "The Trapper",
+      "Охотник",
+      "Траппер",
+      "трап",
+      "капканщик",
+      "Trap",
+      "Evan"
+    ]
+  },
+  "Claudette": {
+    "code": "Claudette",
+    "aliases": [
+      "Claudette",
+      "Claudette Morel",
+      "Клодетт Морель",
+      "Клод",
+      "Клодетт",
+      "Морель",
+      "Claud",
+      "Morel"
+    ]
+  },
+  "Clown": {
+    "code": "Clown",
+    "aliases": [
+      "Clown",
+      "клоун",
+      "The Clown",
+      "клоунчик",
+      "Кеннет",
+      "Ken",
+      "Bottles"
+    ]
+  },
+  "Demogorgon": {
+    "code": "Demogorgon",
+    "aliases": [
+      "Demogorgon",
+      "The Demogorgon",
+      "Демогоргон",
+      "Демо",
+      "собака",
+      "Demo",
+      "Doggo"
+    ]
+  },
+  "Dwight": {
+    "code": "Dwight",
+    "aliases": [
+      "Dwight",
+      "dwight fairfield",
+      "двайт",
+      "двайт фэрфилд",
+      "Дуайт Фэйрфилд",
+      "Дуайт",
+      "Фэйрфилд",
+      "Dwighty",
+      "Fairfield"
+    ]
+  },
+  "Detective David Tapp": {
+    "code": "Eric",
+    "aliases": [
+      "Detective David Tapp",
+      "Eric",
+      "david tapp",
+      "tapp",
+      "дэвид тапп",
+      "тапп",
+      "детектив тапп",
+      "Детектив Тэпп",
+      "Тэпп",
+      "Детектив",
+      "Дэвид Т",
+      "Detective"
+    ]
+  },
+  "Feng": {
+    "code": "Feng",
+    "aliases": [
+      "Feng",
+      "Feng Min",
+      "Фенг Мин",
+      "Фенг",
+      "Фэнг",
+      "Мин",
+      "Min"
+    ]
+  },
+  "Ghostface": {
+    "code": "Ghostface",
+    "aliases": [
+      "Ghostface",
+      "The Ghost Face",
+      "Гоуст Фейс",
+      "Гоуст",
+      "Ghost Face"
+    ]
+  },
+  "Gunslinger": {
+    "code": "Gunslinger",
+    "aliases": [
+      "Gunslinger",
+      "The Deathslinger",
+      "Стрелок",
+      "Слингер",
+      "Дезслингер",
+      "Deathslinger",
+      "Slinger",
+      "Caleb"
+    ]
+  },
+  "HillBilly": {
+    "code": "HillBilly",
+    "aliases": [
+      "HillBilly",
+      "The Hillbilly",
+      "Деревенщина",
+      "Билли",
+      "Хиллбилли",
+      "Billy",
+      "Chainsaw Billy"
+    ]
+  },
+  "Jake": {
+    "code": "Jake",
+    "aliases": [
+      "Jake",
+      "Jake Park",
+      "Джейк Парк",
+      "Джейк",
+      "Парк",
+      "Джек",
+      "Park"
+    ]
+  },
+  "Jane": {
+    "code": "Jane",
+    "aliases": [
+      "Jane",
+      "Jane Romero",
+      "Джейн Ромеро",
+      "Джейн",
+      "Ромеро",
+      "Romero"
+    ]
+  },
+  "Jeff": {
+    "code": "Jeff",
+    "aliases": [
+      "Jeff",
+      "Jeff Johansen",
+      "Джефф Йохансен",
+      "Джефф",
+      "Йохансен",
+      "Johansen"
+    ]
+  },
+  "Executioner": {
+    "code": "K20",
+    "aliases": [
+      "Executioner",
+      "K20",
+      "пирамидоголовый",
+      "палач",
+      "экзекьюшенер",
+      "The Executioner",
+      "Пирамид",
+      "Пирамидхед",
+      "Pyramid Head",
+      "PHead"
+    ]
+  },
+  "Blight": {
+    "code": "K21",
+    "aliases": [
+      "Blight",
+      "K21",
+      "блайт",
+      "The Blight",
+      "Мор",
+      "Талбот",
+      "Talbot",
+      "Rush"
+    ]
+  },
+  "Twins": {
+    "code": "K22",
+    "aliases": [
+      "Twins",
+      "K22",
+      "близнецы",
+      "The Twins",
+      "Шарлотта",
+      "Виктор",
+      "Charlotte",
+      "Victor"
+    ]
+  },
+  "Trickster": {
+    "code": "K23",
+    "aliases": [
+      "Trickster",
+      "K23",
+      "трикстер",
+      "трюкач",
+      "The Trickster",
+      "Джи-Ун",
+      "Ji-Woon",
+      "K-pop"
+    ]
+  },
+  "Nemesis": {
+    "code": "K24",
+    "aliases": [
+      "Nemesis",
+      "K24",
+      "немезис",
+      "The Nemesis",
+      "Неми",
+      "Немка",
+      "Nemi",
+      "T-Virus"
+    ]
+  },
+  "Artist": {
+    "code": "K26",
+    "aliases": [
+      "Artist",
+      "K26",
+      "художница",
+      "артист",
+      "The Artist",
+      "Кармина",
+      "Carmina",
+      "Crows"
+    ]
+  },
+  "Onryō": {
+    "code": "K27",
+    "aliases": [
+      "Onryō",
+      "K27",
+      "The Onryō",
+      "Онрё",
+      "Садако",
+      "кассета",
+      "Onryo",
+      "Sadako",
+      "Tape Girl"
+    ]
+  },
+  "Dredge": {
+    "code": "K28",
+    "aliases": [
+      "Dredge",
+      "K28",
+      "The Dredge",
+      "Грязь",
+      "Дредж",
+      "шкафы",
+      "Locker Monster",
+      "Darkness"
+    ]
+  },
+  "Mastermind": {
+    "code": "K29",
+    "aliases": [
+      "Mastermind",
+      "K29",
+      "вескер",
+      "альберт вескер",
+      "The Mastermind",
+      "Кукловод",
+      "Мастермайнд",
+      "Wesker",
+      "Albert"
+    ]
+  },
+  "Knight": {
+    "code": "K30",
+    "aliases": [
+      "Knight",
+      "K30",
+      "рыцарь",
+      "найт",
+      "The Knight",
+      "Тархос",
+      "гварды",
+      "Tarhos",
+      "Guards"
+    ]
+  },
+  "Skull Merchant": {
+    "code": "K31",
+    "aliases": [
+      "Skull Merchant",
+      "K31",
+      "The Skull Merchant",
+      "Торговка черепами",
+      "дроны",
+      "Adriana"
+    ]
+  },
+  "Singularity": {
+    "code": "K32",
+    "aliases": [
+      "Singularity",
+      "K32",
+      "The Singularity",
+      "Сингулярность",
+      "Синга",
+      "Хакс",
+      "HUX",
+      "Pods"
+    ]
+  },
+  "Xenomorph": {
+    "code": "K33",
+    "aliases": [
+      "Xenomorph",
+      "K33",
+      "ксеноморф",
+      "The Xenomorph",
+      "Ксено",
+      "чужой",
+      "Xeno",
+      "Alien"
+    ]
+  },
+  "Good Guy": {
+    "code": "K34",
+    "aliases": [
+      "Good Guy",
+      "K34",
+      "chucky",
+      "чакки",
+      "чаки",
+      "гуд гай",
+      "The Good Guy",
+      "Хороший Парень",
+      "кукла",
+      "Charles"
+    ]
+  },
+  "Unknown": {
+    "code": "K35",
+    "aliases": [
+      "Unknown",
+      "K35",
+      "The Unknown",
+      "Неведомое",
+      "Невед",
+      "Unk",
+      "Thing"
+    ]
+  },
+  "Lich - Vecna": {
+    "code": "K36",
+    "aliases": [
+      "Lich - Vecna",
+      "K36",
+      "vecna",
+      "lich",
+      "лич",
+      "векна",
+      "The Lich",
+      "днд",
+      "D&D"
+    ]
+  },
+  "Dracula": {
+    "code": "K37",
+    "aliases": [
+      "Dracula",
+      "K37",
+      "The Dark Lord",
+      "Темный Властелин",
+      "Дракула",
+      "Кастлвания",
+      "Dark Lord",
+      "Drac"
+    ]
+  },
+  "Houndmaster": {
+    "code": "K38",
+    "aliases": [
+      "Houndmaster",
+      "K38",
+      "The Houndmaster",
+      "Егерь",
+      "Хаундмастер",
+      "псы",
+      "Portia",
+      "Hounds"
+    ]
+  },
+  "Ghoul": {
+    "code": "K39",
+    "aliases": [
+      "Ghoul",
+      "K39",
+      "kaneki",
+      "гуль",
+      "канеки",
+      "The Ghoul",
+      "Токийский гуль",
+      "Ken"
+    ]
+  },
+  "Animatronic": {
+    "code": "K40",
+    "aliases": [
+      "Animatronic",
+      "K40",
+      "The Animatronic",
+      "Аниматроник",
+      "Афтон",
+      "Спрингтрап",
+      "Springtrap",
+      "Afton"
+    ]
+  },
+  "Krasue": {
+    "code": "K41",
+    "aliases": [
+      "Krasue",
+      "K41",
+      "The Krasue",
+      "Красу",
+      "Красуэ",
+      "Краса",
+      "Burong",
+      "Flying Head"
+    ]
+  },
+  "The First": {
+    "code": "K42",
+    "aliases": [
+      "The First",
+      "K42",
+      "first",
+      "фест",
+      "ферст",
+      "первый",
+      "henry",
+      "генри",
+      "Крил",
+      "Henry Creel",
+      "001"
+    ]
+  },
+  "Slasher": {
+    "code": "K43",
+    "aliases": [
+      "Slasher",
+      "K43",
+      "the slasher",
+      "jason",
+      "jason voorhees",
+      "voorhees",
+      "джейсон",
+      "джейсон вурхиз",
+      "вурхиз",
+      "ворхиз",
+      "ворхис",
+      "пятница 13",
+      "пятница тринадцатое",
+      "кристальное озеро",
+      "Пятница, 13-е",
+      "Лагерь Хрустальное озеро"
+    ]
+  },
+  "Kate": {
+    "code": "Kate",
+    "aliases": [
+      "Kate",
+      "kate denson",
+      "кейт",
+      "кейт денсон",
+      "Денсон",
+      "Denson"
+    ]
+  },
+  "Doctor": {
+    "code": "Killer07",
+    "aliases": [
+      "Doctor",
+      "Killer07",
+      "The Doctor",
+      "Доктор",
+      "Док",
+      "Херман",
+      "Doc",
+      "Herman"
+    ]
+  },
+  "Laurie Strode": {
+    "code": "Laurie",
+    "aliases": [
+      "Laurie Strode",
+      "Laurie",
+      "Лори Строуд",
+      "Лори",
+      "Строуд",
+      "Лорка",
+      "Strode"
+    ]
+  },
+  "Legion": {
+    "code": "Legion",
+    "aliases": [
+      "Legion",
+      "The Legion",
+      "Легион",
+      "Лега",
+      "Фрэнк",
+      "Frank",
+      "Julie"
+    ]
+  },
+  "Meg": {
+    "code": "Meg",
+    "aliases": [
+      "Meg",
+      "meg thomas",
+      "meg thomson",
+      "мэг",
+      "мег",
+      "мэг томас",
+      "мег томас",
+      "Томас",
+      "Meghead",
+      "Thomas"
+    ]
+  },
+  "Nancy": {
+    "code": "Nancy",
+    "aliases": [
+      "Nancy",
+      "Nancy Wheeler",
+      "Нэнси Уиллер",
+      "Нэнси",
+      "Уиллер",
+      "Wheeler"
+    ]
+  },
+  "Nea": {
+    "code": "Nea",
+    "aliases": [
+      "Nea",
+      "Nea Karlsson",
+      "Нея Карлссон",
+      "Нея",
+      "Неа",
+      "Карлссон",
+      "Karlsson"
+    ]
+  },
+  "Nightmare": {
+    "code": "Nightmare",
+    "aliases": [
+      "Nightmare",
+      "The Nightmare",
+      "Кошмар",
+      "Фредди",
+      "Фред",
+      "Freddy",
+      "Krueger"
+    ]
+  },
+  "Nurse": {
+    "code": "Nurse",
+    "aliases": [
+      "Nurse",
+      "The Nurse",
+      "Медсестра",
+      "Нюрса",
+      "Нерса",
+      "Sally",
+      "Blink Nurse"
+    ]
+  },
+  "Oni": {
+    "code": "Oni",
+    "aliases": [
+      "Oni",
+      "The Oni",
+      "Они",
+      "Казан",
+      "оник",
+      "Kazan",
+      "Angry Oni"
+    ]
+  },
+  "Pig": {
+    "code": "Pig",
+    "aliases": [
+      "Pig",
+      "The Pig",
+      "Свинья",
+      "Amanda",
+      "Аманда",
+      "Jigsaw"
+    ]
+  },
+  "Plague": {
+    "code": "Plague",
+    "aliases": [
+      "Plague",
+      "The Plague",
+      "Чума",
+      "Плаг",
+      "Адырис",
+      "Adiris",
+      "Puke Lady"
+    ]
+  },
+  "Quentin": {
+    "code": "Quentin",
+    "aliases": [
+      "Quentin",
+      "Quentin Smith",
+      "Квентин Смит",
+      "Квентин",
+      "Смит",
+      "Квин",
+      "Smith"
+    ]
+  },
+  "Cheryl Mason": {
+    "code": "S22",
+    "aliases": [
+      "Cheryl Mason",
+      "S22",
+      "Шерил Мейсон",
+      "Шерил",
+      "Мейсон",
+      "Cheryl",
+      "Mason",
+      "Heather"
+    ]
+  },
+  "Felix Richter": {
+    "code": "S23",
+    "aliases": [
+      "Felix Richter",
+      "S23",
+      "felix",
+      "феликс",
+      "феликс рихтер",
+      "Рихтер",
+      "Richter"
+    ]
+  },
+  "Élodie Rakoto": {
+    "code": "S24",
+    "aliases": [
+      "Élodie Rakoto",
+      "S24",
+      "Элоди Ракото",
+      "Элоди",
+      "Ракото",
+      "Elodie",
+      "Rakoto"
+    ]
+  },
+  "Yun-Jin Lee": {
+    "code": "S25",
+    "aliases": [
+      "Yun-Jin Lee",
+      "S25",
+      "yun jin lee",
+      "юн-джин ли",
+      "юн джин ли",
+      "юнджин",
+      "Ли Юнчин",
+      "Yun-Jin",
+      "YunJin",
+      "Lee"
+    ]
+  },
+  "Jill Valentine": {
+    "code": "S26",
+    "aliases": [
+      "Jill Valentine",
+      "S26",
+      "Джилл Валентайн",
+      "Джилл",
+      "Джил",
+      "Валентайн",
+      "Jill",
+      "Valentine"
+    ]
+  },
+  "Leon S. Kennedy": {
+    "code": "S27",
+    "aliases": [
+      "Leon S. Kennedy",
+      "S27",
+      "Леон С. Кеннеди",
+      "Леон",
+      "Кеннеди",
+      "Leon",
+      "Kennedy",
+      "LSK"
+    ]
+  },
+  "Mikaela Reid": {
+    "code": "S28",
+    "aliases": [
+      "Mikaela Reid",
+      "S28",
+      "Микаэла Рид",
+      "Микаэла",
+      "Рид",
+      "Mikaela",
+      "Reid"
+    ]
+  },
+  "Jonah Vasquez": {
+    "code": "S29",
+    "aliases": [
+      "Jonah Vasquez",
+      "S29",
+      "jonah",
+      "джона",
+      "джона васкес",
+      "йона васкес",
+      "Хонас Васкес",
+      "Йонас",
+      "Хонас",
+      "Васкес",
+      "Vasquez"
+    ]
+  },
+  "Yoichi Asakawa": {
+    "code": "S30",
+    "aliases": [
+      "Yoichi Asakawa",
+      "S30",
+      "Ёити Асакава",
+      "Йоити",
+      "Ёити",
+      "Асакава",
+      "Yoichi",
+      "Asakawa"
+    ]
+  },
+  "Haddie Kaur": {
+    "code": "S31",
+    "aliases": [
+      "Haddie Kaur",
+      "S31",
+      "Хэдди Каур",
+      "Хэдди",
+      "Каур",
+      "Haddie",
+      "Kaur"
+    ]
+  },
+  "Ada Wong": {
+    "code": "S32",
+    "aliases": [
+      "Ada Wong",
+      "S32",
+      "ada",
+      "ада",
+      "ада вонг",
+      "аду вонг",
+      "Вонг",
+      "Wong"
+    ]
+  },
+  "Rebecca Chambers": {
+    "code": "S33",
+    "aliases": [
+      "Rebecca Chambers",
+      "S33",
+      "rebecca",
+      "ребекка",
+      "ребекка чемберс",
+      "Чемберс",
+      "Chambers"
+    ]
+  },
+  "Vittorio Toscano": {
+    "code": "S34",
+    "aliases": [
+      "Vittorio Toscano",
+      "S34",
+      "vittorio",
+      "витторио",
+      "витторио тоскана",
+      "витторио тоскaно",
+      "Витторио Тоскано",
+      "Тоскано",
+      "Toscano"
+    ]
+  },
+  "Thalita Lyra": {
+    "code": "S35",
+    "aliases": [
+      "Thalita Lyra",
+      "S35",
+      "Талита Лира",
+      "Талита",
+      "Лира",
+      "Thalita",
+      "Lyra"
+    ]
+  },
+  "Renato Lyra": {
+    "code": "S36",
+    "aliases": [
+      "Renato Lyra",
+      "S36",
+      "renato",
+      "ренато",
+      "ренато лира",
+      "Лира",
+      "Lyra"
+    ]
+  },
+  "Gabriel Soma": {
+    "code": "S37",
+    "aliases": [
+      "Gabriel Soma",
+      "S37",
+      "Габриэль Сома",
+      "Габриэль",
+      "Сома",
+      "Gabriel",
+      "Soma"
+    ]
+  },
+  "Nicolas Cage": {
+    "code": "S38",
+    "aliases": [
+      "Nicolas Cage",
+      "S38",
+      "Николас Кейдж",
+      "Кейдж",
+      "Ник",
+      "Николас",
+      "Cage",
+      "Nicolas",
+      "Nick"
+    ]
+  },
+  "Ellen Ripley": {
+    "code": "S39",
+    "aliases": [
+      "Ellen Ripley",
+      "S39",
+      "Эллен Рипли",
+      "Рипли",
+      "Эллен",
+      "Ripley",
+      "Ellen"
+    ]
+  },
+  "Alan Wake": {
+    "code": "S40",
+    "aliases": [
+      "Alan Wake",
+      "S40",
+      "Алан Уэйк",
+      "Алан",
+      "Уэйк",
+      "Alan",
+      "Wake"
+    ]
+  },
+  "Sable Ward": {
+    "code": "S41",
+    "aliases": [
+      "Sable Ward",
+      "S41",
+      "sable",
+      "сейбл",
+      "сейбл уорд",
+      "Уорд",
+      "Ward"
+    ]
+  },
+  "Aestri Yazar": {
+    "code": "S42",
+    "aliases": [
+      "Aestri Yazar",
+      "S42",
+      "aestri",
+      "аэстри",
+      "аэстри язар",
+      "Aestri Yazar & Baermar Uraz (The Troupe)",
+      "Аэстри Язар (Баэмар Ураз)",
+      "Баэмар",
+      "Труппа",
+      "Baermar",
+      "The Troupe"
+    ]
+  },
+  "Lara Croft": {
+    "code": "S43",
+    "aliases": [
+      "Lara Croft",
+      "S43",
+      "lara",
+      "лара",
+      "лара крофт",
+      "Крофт",
+      "Croft"
+    ]
+  },
+  "Trevor Belmont": {
+    "code": "S44",
+    "aliases": [
+      "Trevor Belmont",
+      "S44",
+      "trevor",
+      "тревор",
+      "тревор бельмонт",
+      "Белмонт",
+      "Belmont"
+    ]
+  },
+  "Taurie Cain": {
+    "code": "S45",
+    "aliases": [
+      "Taurie Cain",
+      "S45",
+      "taurie",
+      "тори",
+      "тори кейн",
+      "таури",
+      "таури кейн",
+      "Кейн",
+      "Cain"
+    ]
+  },
+  "Orela Rose": {
+    "code": "S46",
+    "aliases": [
+      "Orela Rose",
+      "S46",
+      "Орела Роуз",
+      "Орела",
+      "Роуз",
+      "Orela",
+      "Rose"
+    ]
+  },
+  "Rick Grimes": {
+    "code": "S47",
+    "aliases": [
+      "Rick Grimes",
+      "S47",
+      "Рик Граймс",
+      "Рик",
+      "Граймс",
+      "Rick",
+      "Grimes"
+    ]
+  },
+  "Michonne Grimes": {
+    "code": "S48",
+    "aliases": [
+      "Michonne Grimes",
+      "S48",
+      "Мишон Граймс",
+      "Мишон",
+      "Граймс",
+      "Michonne",
+      "Katana"
+    ]
+  },
+  "Vee Boonyasak": {
+    "code": "S49",
+    "aliases": [
+      "Vee Boonyasak",
+      "S49",
+      "vee",
+      "ви",
+      "ви бунясак",
+      "ви буниясак",
+      "ви бунязак",
+      "Бунясак",
+      "Boonyasak"
+    ]
+  },
+  "Dustin Henderson": {
+    "code": "S50",
+    "aliases": [
+      "Dustin Henderson",
+      "S50",
+      "dustin",
+      "дастин",
+      "дастин хендерсон",
+      "Хендерсон",
+      "Henderson"
+    ]
+  },
+  "Eleven": {
+    "code": "S51",
+    "aliases": [
+      "Eleven",
+      "S51",
+      "Одиннадцать",
+      "Елевен"
+    ]
+  },
+  "Kwon Tae-Young": {
+    "code": "S52",
+    "aliases": [
+      "Kwon Tae-Young",
+      "S52",
+      "kwon",
+      "тхэён",
+      "квон",
+      "квон тхэён",
+      "квон тэ ён",
+      "Тэён",
+      "Tae-young"
+    ]
+  },
+  "Shane Wiigwaas": {
+    "code": "S53",
+    "aliases": [
+      "Shane Wiigwaas",
+      "S53",
+      "shane",
+      "wiigwaas",
+      "шейн",
+      "шейн уиигваас",
+      "уиигваас"
+    ]
+  },
+  "Shape": {
+    "code": "Shape",
+    "aliases": [
+      "Shape",
+      "майкл майерс",
+      "michael myers",
+      "шейп",
+      "The Shape",
+      "Тень",
+      "Майерс",
+      "Майкл",
+      "Майки",
+      "Myers",
+      "Michael",
+      "Mikey"
+    ]
+  },
+  "David King": {
+    "code": "Smoke",
+    "aliases": [
+      "David King",
+      "Smoke",
+      "Дэвид Кинг",
+      "Дэвид",
+      "Кинг",
+      "David",
+      "King"
+    ]
+  },
+  "Spirit": {
+    "code": "Spirit",
+    "aliases": [
+      "Spirit",
+      "The Spirit",
+      "Дух",
+      "Спирит",
+      "Рин",
+      "Rin",
+      "Phase"
+    ]
+  },
+  "Steve": {
+    "code": "Steve",
+    "aliases": [
+      "Steve",
+      "Steve Harrington",
+      "Стив Харрингтон",
+      "Стив",
+      "Харрингтон",
+      "Harrington"
+    ]
+  },
+  "Witch": {
+    "code": "Witch",
+    "aliases": [
+      "Witch",
+      "The Hag",
+      "Ведьма",
+      "Хаг",
+      "Лиза",
+      "Hag",
+      "Lisa",
+      "Trap Hag"
+    ]
+  },
+  "Yui": {
+    "code": "Yui",
+    "aliases": [
+      "Yui",
+      "Yui Kimura",
+      "Юи Кимура",
+      "Кимура",
+      "Kimura"
+    ]
+  },
+  "Zarina": {
+    "code": "Zarina",
+    "aliases": [
+      "Zarina",
+      "Zarina Kassir",
+      "Зарина Кассир",
+      "Зарина",
+      "Кассир",
+      "Kassir"
+    ]
+  },
+  "Cenobite": {
+    "code": "K25",
+    "aliases": [
+      "Cenobite",
+      "K25",
+      "The Cenobite",
+      "Сенобит",
+      "Пинхед",
+      "цепи",
+      "Pinhead",
+      "Hellraiser"
+    ]
+  }
 }
