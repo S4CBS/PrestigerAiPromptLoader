@@ -74,6 +74,7 @@ Important:
 - Important mappings include: `The Doctor` / `Доктор` -> `Doctor`, `The Nurse` / `Медсестра` -> `Nurse`, `The Shape` / `Тень` / `Michael Myers` / `Майерс` -> `Shape`, `The Blight` / `Мор` -> `Blight`, `The Dredge` / `Грязь` -> `Dredge`, `The Mastermind` / `Кукловод` / `Wesker` / `Вескер` -> `Mastermind`, `The Dark Lord` / `Темный Властелин` / `Dracula` / `Дракула` -> `Dracula`, `The Lich` / `Лич` / `Vecna` / `Векна` -> `Lich - Vecna`.
 - More important mappings: `The Good Guy` / `Хороший Парень` / `Chucky` / `Чаки` -> `Good Guy`, `The Ghoul` / `Гуль` / `Kaneki` / `Канеки` -> `Ghoul`, `The Animatronic` / `Аниматроник` / `Springtrap` / `Спрингтрап` / `Afton` / `Афтон` -> `Animatronic`, `The Houndmaster` / `Егерь` -> `Houndmaster`, `The Deathslinger` / `Стрелок` -> `Gunslinger`, `The Hag` / `Ведьма` -> `Witch`, `The Hillbilly` / `Деревенщина` -> `HillBilly`, `The Trapper` / `Охотник` -> `Trapper`.
 - Survivor/full-name mappings include: `David Tapp` / `Детектив Тэпп` -> `Detective David Tapp`, `Ace Visconti` / `Эйс Висконти` -> `Ace`, `Dwight Fairfield` / `Дуайт Фэйрфилд` -> `Dwight`, `Meg Thomas` / `Мэг Томас` -> `Meg`, `Kwon Tae-young` / `Квон Тхэён` -> `Kwon Tae-Young`.
+- Do not map `Ash Williams`, `Эшли Джей Уильямс`, `Williams`, `Уильямс`, or declined forms like `Уильямса` to `Bill`. Bill needs an explicit Bill/Билл/Overbeck/Овербек mention.
 - If the user says `всем сделать до 2 престижа`, compile it into explicit operations only for characters currently below 2 prestige.
 - If a character already meets or exceeds the requested target, you may still include it with the same target, but prefer a clean explicit plan.
 - Do not ask clarification only because the Russian word ending is incorrect if the intent is otherwise clear.
@@ -140,7 +141,7 @@ ROSTER_ALIASES = {
     "Animatronic": ["The Animatronic", "Аниматроник", "Афтон", "Спрингтрап", "Springtrap", "Afton"],
     "Artist": ["The Artist", "Художница", "Артист", "Кармина", "Carmina", "Crows"],
     "Ash": ["Ash Williams", "Эшли Джей Уильямс", "Эшли", "Уильямс", "Ashley", "Williams"],
-    "Bill": ['Bill Overbeck', 'Уильям "Билл" Овербек', "Билл", "Овербек", "Уильям", "Overbeck", "L4D Bill"],
+    "Bill": ['Bill Overbeck', 'Уильям "Билл" Овербек', "Билл", "Овербек", "Overbeck", "L4D Bill"],
     "Blight": ["The Blight", "Мор", "Блайт", "Талбот", "Talbot", "Rush"],
     "Cannibal": ["The Cannibal", "Каннибал", "Бубба", "Лезерфейс", "Bubba", "Leatherface"],
     "Cenobite": ["The Cenobite", "Сенобит", "Пинхед", "цепи", "Pinhead", "Hellraiser"],
@@ -291,7 +292,6 @@ ROSTER_CODE_ALIAS_MAP = {
       "Уильям \"Билл\" Овербек",
       "Билл",
       "Овербек",
-      "Уильям",
       "Overbeck",
       "L4D Bill"
     ]
